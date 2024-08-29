@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +25,8 @@ public class CadastroActivity extends AppCompatActivity {
     EditText campoAno;
     Button btnNovo;
     ImageView btnClose;
+
+    ImageView btnRemove;
     private Veiculo veiculo;
 
     @Override
@@ -41,6 +44,7 @@ public class CadastroActivity extends AppCompatActivity {
         campoAno = findViewById(R.id.campoAno);
         btnNovo = findViewById(R.id.button_novo_cadastro);
         btnClose = findViewById(R.id.btn_close);
+        btnRemove = findViewById(R.id.bin);
     }
 
     private void configuraBotoes() {
@@ -62,7 +66,7 @@ public class CadastroActivity extends AppCompatActivity {
                 veiculo.setMarca(marcaVeiculo);
                 veiculo.setAno(anoVeiculo);
                 Dados.getInstance().atualizar(veiculo);
-                Toast.makeText(this, "Veiculo atualizado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Veiculo Atualizado com Sucesso", Toast.LENGTH_SHORT).show();
                 finish();
             } else {
                 Veiculo novoVeiculo = new Veiculo();
@@ -71,9 +75,19 @@ public class CadastroActivity extends AppCompatActivity {
                 novoVeiculo.setAno(anoVeiculo);
                 Dados.getInstance().salvar(novoVeiculo);
                 Log.i("Save", "configuraBotoes: " + novoVeiculo);
-                Toast.makeText(this, "Veiculo cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Veiculo Cadastrado com Sucesso", Toast.LENGTH_SHORT).show();
             }
             finish();
+        });
+
+        btnRemove.setOnClickListener(v -> {
+            if(veiculo != null){
+                Dados.getInstance().remover(veiculo);
+                Toast.makeText(this, "Veiculo Removido com Sucesso", Toast.LENGTH_SHORT).show();
+                finish();
+            }else {
+                Toast.makeText(this, "Nenhum veículo selecionado para remover", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
@@ -88,6 +102,7 @@ public class CadastroActivity extends AppCompatActivity {
             preencheCampos();
         } else {
             veiculo = null;
+            btnRemove.setVisibility(View.GONE);
         }
     }
 

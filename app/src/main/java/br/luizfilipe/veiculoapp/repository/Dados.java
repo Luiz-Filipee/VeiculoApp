@@ -33,4 +33,8 @@ public class Dados {
             }
         }
     }
+
+    public void remover(Veiculo veiculo) {
+        veiculoList.removeIf(v -> v.getId().equals(veiculo.getId()));
+    }
 }
