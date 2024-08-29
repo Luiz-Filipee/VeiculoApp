@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">VeiculoApp</string>
+    <string name="digite_o_ano_do_carro">Digite o ano do carro</string>
+    <string name="digite_a_marca_do_carro">Digite a marca do carro</string>
+    <string name="digite_o_nome_do_carro">Digite o nome do carro</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="controle_de_veiculos">Controle de Veiculos</string>
+    <string name="desenvolvido_por_luiz_filipe_m_kato">Desenvolvido por Luiz Filipe M. Kato</string>
+</resources>
